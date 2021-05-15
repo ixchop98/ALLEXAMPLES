@@ -1,0 +1,69 @@
+<div class="breadcumb_area bg-img" style="background-image: url(../assets/img/bg-img/breadcumb.jpg);">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <div class="page-title text-center">
+                        <h2>Editar Usuario</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+<div class="checkout_area section-padding-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 offset-sm-3">
+                    <div class="checkout_details_area mt-50 clearfix">
+                        <form #formEditUser="ngForm" (ngSubmit)="OnSubmit()">
+                            <div class="row justify-content-md-center">
+                                <div class="col col-lg-6 col-md-offset-2">
+                                    <label for="first_name">Nombre <span>*</span></label>
+                                    <input type="text" name="first_name" class="form-control" #nombre="ngModel" [(ngModel)]="user.nombre" required>
+                                    <span *ngIf="nombre.touched && !nombre.valid" style="color: red">
+                                        El nombre es obligatorio
+                                    </span>
+                                </div>
+                                <div class="col col-lg-6">
+                                    <label for="last_name">Apellido <span>*</span></label>
+                                    <input type="text" name="last_name" class="form-control" #apellido="ngModel" [(ngModel)]="user.apellido" required>
+                                    <span *ngIf="apellido.touched && !apellido.valid" style="color: red">
+                                        El apellido es obligatorio
+                                    </span>
+                                </div>
+                               <div class="col-12 mb-3">
+                                    <label for="password">Contraseña <span>*</span></label>
+                                    <input type="password" name="password" class="form-control" #password="ngModel" [(ngModel)]="user.password" required
+                                    pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&¿.,{}\[\]()/\-\+\-_=#:;<>'\\])[A-Za-z\d$@$!%*?&¿.,{}\[\]/\-\+\-_=#:;<>'\\()]{9,}$">
+                                    <span *ngIf="password.touched && !password.valid" style="color: red">
+                                        La contraseña debe tener min. 9 caracteres, una letra mayúscula, una letra minúscula, un número y un simbolo especial
+                                    </span> 
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <label for="correo">Correo <span>*</span></label>
+                                    <input type="email" name="correo" class="form-control" #correo="ngModel" [(ngModel)]="user.correo" required 
+                                    pattern="^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$">
+                                    <span *ngIf="correo.touched && !correo.valid" style="color: red">
+                                        Ingrese un correo valido
+                                    </span>
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <label for="telefono">Telefono</label>
+                                    <input type="number" name="telefono" class="form-control" #telefono="ngModel" [(ngModel)]="user.telefono">
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <label for="inputDireccion">Dirección</label>
+                                    <input type="text" name="inputDireccion" class="form-control" #direccion="ngModel" [(ngModel)]="user.direccion">
+                                </div>
+                                <div class="col col-lg-6">
+                                    <input type="submit" class="btn essence-btn" value="Guardar" [disabled]="!formEditUser.form.valid">
+                                </div>
+                                <div class="col col-lg-6">
+                                    <button (click)="RedirectHomeCrud()" class="btn essence-btn">Cancelar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>

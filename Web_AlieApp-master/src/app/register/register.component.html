@@ -1,0 +1,91 @@
+<div class="breadcumb_area bg-img" style="background-image: url(../assets/img/bg-img/breadcumb.jpg);">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <div class="page-title text-center">
+                        <h2>Registrarse</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+<div class="checkout_area section-padding-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 offset-sm-3">
+                    <div class="checkout_details_area mt-50 clearfix">
+                        <form #formRegister="ngForm" (ngSubmit)="onSubmitForm()">
+                            <div class="row justify-content-md-center">
+                                <div class="col col-lg-6 col-md-offset-2">
+                                    <label for="first_name">Nombre <span>*</span></label>
+                                    <input type="text" name="first_name" class="form-control" #nombre="ngModel" [(ngModel)]="usuarioReg.nombre" required>
+                                    <span *ngIf="nombre.touched && !nombre.valid" style="color: red">
+                                        El nombre es obligatorio
+                                    </span>
+                                </div>
+                                <div class="col col-lg-6">
+                                    <label for="last_name">Apellido <span>*</span></label>
+                                    <input type="text" name="last_name" class="form-control" #apellido="ngModel" [(ngModel)]="usuarioReg.apellido" required>
+                                    <span *ngIf="apellido.touched && !apellido.valid" style="color: red">
+                                        El apellido es obligatorio
+                                    </span>
+                                </div>
+                                <div class="col-12">
+                                    <label for="company">Nombre de Usuario <span>*</span></label>
+                                    <input type="text" name="company" class="form-control" #username= "ngModel" [(ngModel)]="usuarioReg.username" required>
+                                    <span *ngIf="username.touched && !username.valid" style="color: red">
+                                        El nombre de usuario es obligatorio
+                                    </span>
+                               </div>
+                               <!-- <div class="col-12 mb-3">
+                                    <label for="password">Contraseña <span>*</span></label>
+                                    <input type="password" name="password" class="form-control" #password="ngModel" [(ngModel)]="usuarioReg.password" required
+                                    pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&¿.,{}\[\]()/\-\+\-_=#:;<>'\\])[A-Za-z\d$@$!%*?&¿.,{}\[\]/\-\+\-_=#:;<>'\\()]{9,}$">
+                                    <span *ngIf="password.touched && !password.valid" style="color: red">
+                                        La contraseña debe tener min. 9 caracteres, una letra mayúscula, una letra minúscula, un número y un simbolo especial
+                                    </span> 
+                                </div>-->
+                                <div class="col-12 mb-3">
+                                    <label for="correo">Correo <span>*</span></label>
+                                    <input type="email" name="correo" class="form-control" #correo="ngModel" [(ngModel)]="usuarioReg.correo" required 
+                                    pattern="^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$">
+                                    <span *ngIf="correo.touched && !correo.valid" style="color: red">
+                                        Ingrese un correo valido
+                                    </span>
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <label for="telefono">Telefono</label>
+                                    <input type="number" name="telefono" class="form-control" #telefono="ngModel" [(ngModel)]="usuarioReg.telefono">
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <label for="genero">Genero <span>*</span></label>
+                                    <select class="w-100" name="genero" #genero="ngModel" [(ngModel)]="usuarioReg.genero">
+                                        <option value="M">Masculino</option>
+                                        <option value="F">Femenino</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <label for="fechaN">Fecha de Nacimiento <span>*</span></label>
+                                    <input type="date" name="fechaN" class="form-control" #fechaN="ngModel" [(ngModel)]="usuarioReg.fechaNacimiento" required>
+                                    <span *ngIf="fechaN.touched && !fechaN.valid" style="color: red">
+                                        La fecha de nacimiento es obligatoria
+                                    </span>
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <label for="direccion">Dirección</label>
+                                    <input type="text" name="direccion" class="form-control" #direccion="ngModel" [(ngModel)]="usuarioReg.direccion">
+                                </div>
+                                <input type="hidden" id="psGenerated" data-size="10" data-character-set="a-z,A-Z,0-9,#">
+                                <div class="col col-lg-6">
+                                    <input type="submit" class="btn essence-btn" value="Registrarse" [disabled]="!formRegister.form.valid">
+                                </div>
+                                <div class="col col-lg-6">
+                                    <button (click)='RedirectHome()' class="btn essence-btn">Regresar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>

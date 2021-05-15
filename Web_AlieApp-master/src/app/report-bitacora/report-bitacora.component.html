@@ -1,0 +1,58 @@
+<div class="breadcumb_area bg-img" style="background-image: url(../assets/img/bg-img/breadcumb.jpg);">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <div class="page-title text-center">
+                        <h2>Reporte Bitácora</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+    
+        <div class="col-md-11 col-md-offset-" style="margin-top: 120px">
+
+            <div class="panel panel-default panel-table">
+              <div class="panel-heading">
+                <div class="row">
+                  <div class="col col-xs-6">
+                    <h3 class="panel-title">Listado de Cambios</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="panel-body">
+                <table class="table table-striped table-bordered table-list" id="bitacoraTD">
+                  <thead>
+                    <tr>
+                        <!--<th><em class="fa fa-cog"></em></th>-->
+                        <th>Acción</th>
+                        <th>Nombre de Usuario</th>
+                        <th>Apellido</th>
+                        <th>fecha</th>
+                        <th>Archivo o Carpeta</th>
+                    </tr> 
+                  </thead>
+                  <tbody>
+                          <tr *ngFor="let item of bitacoraFiles">
+                           <!-- <td align="center">
+                              <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
+                              <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
+                            </td> -->
+                            <td>{{item.accion}}</td>
+                            <td>{{item.nombre}}</td>
+                            <td>{{item.apellido}}</td>
+                            <td>{{item.fecha}}</td>
+                            <td>{{item.nombreCarpeta}}</td>
+                          </tr>
+                        </tbody>
+                </table>
+            
+              </div>
+              <div class="col col-xs-6 text-right">
+                    <button type="button" (click)="Download()" class="btn btn-sm btn-primary btn-create">Descargar en PDF</button>
+                  </div>
+            </div>
+
+</div></div></div>

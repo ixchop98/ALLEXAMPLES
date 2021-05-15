@@ -1,0 +1,109 @@
+<div class="breadcumb_area bg-img" style="background-image: url(../assets/img/bg-img/breadcumb.jpg);">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <div class="page-title text-center">
+                        <h2>Carpetas y Archivos</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+<div class="container-fluid" style="margin-top: 100px">
+    <div class="row justify-content-center">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <ejs-treeview #tree id="myTree" [fields]="field" [allowDragAndDrop]='true' (nodeDragging)='nodeDrag($event)' (nodeEditing)='editing($event)' [allowEditing]='true' (nodeDragStop)='dragStop($event)' (nodeEdited)='onNodeEdited($event)' (nodeSelected)='nodeSelected($event)'>
+                    </ejs-treeview>  
+                </div>
+            </div>  
+        </div>
+        <div class="col-sm-6">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" [disabled]="!idCarpeta">Crear Carpeta</button>
+            <button type="button" style="margin-left: 10px" class="btn btn-primary" data-toggle="modal" data-target="#NewFileModal" [disabled]="!idCarpeta">Crear Archivo</button>
+            <button type="button" style="margin-left: 10px" (click)="LoadFolders()" class="btn btn-primary" data-toggle="modal" data-target="#copiarFolder" [disabled]="!(idCarpeta || idArchivo)">Copiar</button>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-sm-6">
+            
+        </div>
+        <div class="col-sm-6" *ngIf="idArchivo">
+            <div class="form-group">
+                <textarea class="form-control" id="exampleFormControlTextarea1" [(ngModel)]="contentFile" rows="10">{{contentFile}}</textarea>
+            </div>
+            <div class="col col-xs-6 text-right">
+                <button type="button" (click)="setContent()" class="btn btn-sm btn-primary btn-create">Guardar Cambios</button>
+                <button type="button" style="margin-left: 20px" (click)="DownloadTxT()" class="btn btn-sm btn-primary btn-create">Descargar pdf</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Crear Carpeta</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label for="folderName">Nombre: </label>
+        <input type="text" name="folderName" [(ngModel)]="nombreCarpeta" class="form-control">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="NewFolder()" [disabled]="!nombreCarpeta">Crear</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="NewFileModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Crear Archivo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label for="fileName">Nombre: </label>
+        <input type="text" name="fileName" [(ngModel)]="nombreArchivo" class="form-control">
+        <label for="fileContent">Contenido: </label>
+        <textarea class="form-control" id="fileContent" [(ngModel)]="contenidoArchivo" rows="10"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="NewFile()" [disabled]="!nombreArchivo">Crear</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="copiarFolder" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Copiar</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label for="role">Carpeta</label>
+        <select class="w-100" name="role" [(ngModel)]="toFolder">
+          <option *ngFor="let item of arrSelect" value="{{item.id}}">{{item.nombre}}</option>
+        </select>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="Copy()" [disabled]="!toFolder">Copiar</button>
+      </div>
+    </div>
+  </div>
+</div>

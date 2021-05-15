@@ -1,0 +1,41 @@
+<div class="breadcumb_area bg-img" style="background-image: url(../assets/img/bg-img/breadcumb.jpg);">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <div class="page-title text-center">
+                        <h2>Iniciar Sesión</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="../../assets/img/icon-user.svg" width="150" id="icon" alt="User Icon" />
+    </div>
+
+    <!-- Login Form -->
+    <form #formLogin="ngForm" (ngSubmit)="onSubmitLogin()">
+      <div class="col-12">
+       	<label for="company">Nombre de Usuario</label>
+        <input type="text" name="company" class="form-control" #username_loginForm="ngModel" [(ngModel)]="username" required>
+      </div>
+      <input type="hidden" id="psGenerated" data-size="10" data-character-set="a-z,A-Z,0-9,#">
+      <div class="col-12">
+       	<label for="pasfield">Contraseña</label>
+        <input type="password" name="pasfield" class="form-control" #password_loginForm= "ngModel" [(ngModel)]="password" required>
+      </div><br>
+      <input type="submit" class="btn essence-btn" [disabled]="!formLogin.form.valid" value="Iniciar Sesión">
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" [routerLink]="['/home']">Regresar</a>
+    </div>
+
+  </div>
+</div>

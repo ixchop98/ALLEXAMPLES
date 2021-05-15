@@ -1,0 +1,22 @@
+{
+  "name": "api-rest-nodejs",
+  "version": "1.0.0",
+  "description": "Api Rest",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "author": "Eddie Alvarez",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "connect-multiparty": "^2.2.0",
+    "express": "^4.17.1",
+    "node-mailjet": "^3.3.1",
+    "oracledb": "^4.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  }
+}
